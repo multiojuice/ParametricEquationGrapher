@@ -14,11 +14,11 @@ def get_initial_points(function):
         sorted in ascending order of x.
     """
     start_theta = 0
-    end_theta =  math.pi
-    dx = .05
+    end_theta =  2 * math.pi
+    dx = .01
     points = []
     while start_theta <= end_theta:
-        points.append([start_theta,function(start_theta)])
+        points.append([int(start_theta * 180 / math.pi),int(function(start_theta) * 100)])
         start_theta += dx
     return points    
 
@@ -38,15 +38,26 @@ def draw_graph(points):
     for point in points:
         turtle.goto(0,0)
         turtle.seth(0)
-        turtle.left(int(point[0] * 180 / math.pi))
-        turtle.forward(int(point[1] * 100))
+        turtle.left(point[0])
+        turtle.forward(point[1])
+
+
 
 def draw_graph_cont(points):
     turtle.clear()
     turtle.pu()
 
-turtle.speed(9)
-draw_graph(get_initial_points(math.sin))
 
+def cosplusone(x):
+    return math.cos(x) + 1
+
+
+def rosegraph(x):
+    return math.sin(2*x)
+
+
+turtle.speed(0)
+draw_graph(get_initial_points(cosplusone))
+turtle.done()
 
 
