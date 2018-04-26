@@ -15,10 +15,10 @@ def get_initial_points(function):
     """
     start_theta = 0
     end_theta =  2 * math.pi
-    dx = .01
+    dx = .025
     points = []
     while start_theta <= end_theta:
-        points.append([int(start_theta * 180 / math.pi),int(function(start_theta) * 100)])
+        points.append([start_theta,function(start_theta)])
         start_theta += dx
     return points    
 
@@ -38,26 +38,31 @@ def draw_graph(points):
     for point in points:
         turtle.goto(0,0)
         turtle.seth(0)
-        turtle.left(point[0])
-        turtle.forward(point[1])
+        turtle.left(int(point[0] * 180 / math.pi))
+        turtle.forward(int(point[1] * 100))
 
 
 
 def draw_graph_cont(points):
     turtle.clear()
     turtle.pu()
+    turtle.seth(0)
+    turtle.goto(points[0][1] * math.cos(points[0][0]) * 200,points[0][1] * math.sin(points[0][0]) * 200)
+    turtle.pd()
+    for point in points:
+        turtle.goto(point[1] * math.cos(point[0]) * 200,point[1] * math.sin(point[0]) * 200)
 
 
 def cosplusone(x):
-    return math.cos(x) + 1
+    return (2* math.cos(x)) + 1
 
 
 def rosegraph(x):
-    return math.sin(2*x)
+    return math.sin(8*x)
 
 
-turtle.speed(0)
-draw_graph(get_initial_points(cosplusone))
+turtle.speed(4)
+draw_graph_cont(get_initial_points(cosplusone))
 turtle.done()
 
 
