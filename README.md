@@ -1,7 +1,11 @@
 # Overview
 The intitial draft of this will be a python interpretation of the algorithm and calculator to do the actual math, and construct the points in an order that they can be drawn in a single motion.
 
-# What is a parametric equation?
+
+# Python Portion
+The python part of this project is designed to 
+
+
 
 # Tools
 - Python3
@@ -12,5 +16,6 @@ The intitial draft of this will be a python interpretation of the algorithm and 
  - PySerial
  - Laser Pointer
  - Maybe a mirror??
+ - Maybe [flipper?](www.flipper.io)
 
  
